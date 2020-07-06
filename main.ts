@@ -13,7 +13,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     info.changeLifeBy(-1)
 })
 let bomb: Sprite = null
-let littleFish: Sprite = null
 let rock: Sprite = null
 let seaweed: Sprite = null
 info.setScore(0)
@@ -160,6 +159,28 @@ f b b b 1 1 1 1 1 1 1 1 b b b b b c c c c c c c b b c f . . . .
 . . . . . . . . . . . . . f f f f f . . . . . . . . . . . . . . 
 `, SpriteKind.Player)
 mySprite.setFlag(SpriteFlag.StayInScreen, true)
+mySprite.setPosition(100, 35)
+let littleFish = sprites.create(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . c c c c . . . . 
+. . . . . . c c d d d d c . . . 
+. . . . . c c c c c c d c . . . 
+. . . . c c 4 4 4 4 d c c . . . 
+. . . c 4 d 4 4 4 4 4 1 c . c c 
+. . c 4 4 4 1 4 4 4 4 d 1 c 4 c 
+. c 4 4 4 4 1 4 4 4 4 4 1 c 4 c 
+f 4 4 4 4 4 1 4 4 4 4 4 1 4 4 f 
+f 4 4 4 f 4 1 c c 4 4 4 1 f 4 f 
+f 4 4 4 4 4 1 4 4 f 4 4 d f 4 f 
+. f 4 4 4 4 1 c 4 f 4 d f f f f 
+. . f f 4 d 4 4 f f 4 c f c . . 
+. . . . f f 4 4 4 4 c d b c . . 
+. . . . . . f f f f d d d c . . 
+. . . . . . . . . . c c c . . . 
+`, SpriteKind.Player)
+littleFish.setPosition(60, 35)
+game.splash("大魚吃小魚", "小心不要吃到炸彈")
+littleFish.destroy()
 mySprite.setPosition(140, 60)
 controller.moveSprite(mySprite)
 game.onUpdateInterval(500, function () {
